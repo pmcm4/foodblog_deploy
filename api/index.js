@@ -30,6 +30,6 @@ app.use("/api/posts", postRoute); // Make sure this line is correct
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 
-app.listen(8800, () => {
-  console.log("connected!");
+app.listen(process.env.PORT || 8800, () => {
+  console.log(`Server started on port ${process.env.PORT || 8800}`);
 });
