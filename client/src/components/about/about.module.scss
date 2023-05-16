@@ -1,0 +1,207 @@
+.root {
+  height: 100vh;
+  background-color: #f9f6ee;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding-bottom: 50px;
+}
+.FoodBuddies {
+  height: 97px;
+  background-color: #1e1e1e;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.title {
+  color: white;
+  height: 97px;
+  font-size: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.aboutFoodBud {
+  text-align: center;
+  width: 1098px;
+  display: flex;
+  font-size: 20px;
+}
+.mid {
+  height: 366px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.sideline {
+  height: 97px;
+  width: 635px;
+  background-color: #d22b2b;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+}
+.head {
+  text-align: center;
+  height: 97px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  font-size: 50px;
+}
+.visiondesc {
+  display: flex;
+  width: 549px;
+  height: 140px;
+  font-size: 21px;
+  position: relative;
+  top: 40px;
+  left: 50px;
+}
+.img {
+  border-radius: 60px;
+  width: 550px;
+  height: 366px;
+  position: relative;
+  right: 50px;
+}
+.low {
+  width: 100%;
+  height: 528px;
+  display: flex;
+  justify-content: space-between;
+}
+.alalng {
+  width: 635px;
+}
+
+.alalng1 {
+  width: 635px;
+  height: 300px;
+}
+
+.head1 {
+  text-align: center;
+  height: 97px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  font-size: 50px;
+}
+.visiondesc1 {
+  display: flex;
+  width: 549px;
+  height: 140px;
+  font-size: 21px;
+  position: relative;
+  top: 40px;
+  left: 50px;
+}
+.sideline1 {
+  height: 97px;
+  width: 635px;
+  background-color: #097969;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
+}
+.imag2 {
+  width: 549px;
+  height: 528px;
+  border-radius: 60px;
+  position: relative;
+  left: 50px;
+}
+.thedevs {
+  height: 97px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: 700;
+  background-color: #fdda0d;
+}
+.firstrow {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.pic {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(128, 128, 128, 0.05);
+  border-radius: 100px;
+}
+.pics {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.names {
+  display: flex;
+  justify-content: space-around;
+}
+.name {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+}
+
+.firstrow1 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.pic1 {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(128, 128, 128, 0.05);
+  border-radius: 100px;
+}
+.pics1 {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.names1 {
+  display: flex;
+  justify-content: space-around;
+}
+.name1 {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+}
+.image {
+}
+.image2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}

@@ -1,0 +1,148 @@
+.root {
+  width: 1076px;
+  height: 702px;
+  border-radius: 50px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  box-shadow: -1px 0px 18px -1px rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: -1px 0px 18px -1px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: -1px 0px 18px -1px rgba(0, 0, 0, 0.63);
+}
+.header {
+  height: 56px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.body {
+  height: 650px;
+  display: flex;
+}
+.left {
+  width: 650px;
+  height: 645px;
+  border-bottom-left-radius: 5px;
+  border-radius: 0px 0px 0px 50px;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 20px;
+}
+.right {
+  width: 426px;
+  display: flex;
+  flex-direction: column;
+}
+.top {
+  height: 542px;
+  background-color: #f9f6ee;
+  display: flex;
+  flex-direction: column;
+}
+.bottom {
+  height: 108px;
+  border-bottom-right-radius: 50px;
+  width: 426px;
+  display: flex;
+  flex-direction: column;
+}
+.headercreate {
+  font-size: 30px;
+}
+.headershare {
+  font-size: 20px;
+  cursor: pointer;
+}
+.bkacdiv {
+  cursor: pointer;
+}
+.prof {
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+}
+.img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+}
+.username {
+  display: flex;
+}
+.choosecat {
+  height: 53px;
+  text-align: start;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  font-size: 20px;
+  color: #4c4c4c;
+  cursor: pointer;
+  background-color: #f9f6ee;
+}
+.locs {
+  height: 48px;
+  width: auto;
+  font-size: 20px;
+  padding-left: 30px;
+  border: none;
+  background-color: #f9f6ee;
+  border-bottom-right-radius: 50px;
+}
+.drop {
+  font-size: 20px;
+}
+.select {
+  width: 251px;
+  height: 57px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+.title {
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  background-color: #f9f6ee;
+  border: none;
+  padding-left: 10px;
+}
+.textArea {
+  height: 380px;
+  background-color: #f9f6ee;
+  border: none;
+}
+.modal {
+}
+.overlay {
+}
+.uploadbtn{
+  background-color: rgba(255, 252, 0, 0.4);
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 30px;
+  color: black;
+  font-weight: bold;
+  position:relative;
+  right:25px;
+  cursor: pointer;
+
+}

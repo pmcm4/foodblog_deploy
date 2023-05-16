@@ -1,0 +1,101 @@
+.root {
+  background-color: #f9f6ee;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  column-gap: 50px;
+}
+.left1 {
+  width: 250px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.right1 {
+  width: 835px;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  min-height: 700px;
+}
+.profPic {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}
+.info {
+  width: 187px;
+  text-align: start;
+}
+.Name {
+}
+.head {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.bod {
+  display: grid;
+  flex-direction: row;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  justify-items: center;
+  overflow: auto;
+}
+.divider {
+  border: none;
+  height: 2px;
+  background-color: black;
+  width: 100%;
+}
+.geadgead {
+  display: flex;
+  justify-content: space-between;
+}
+.hello {
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+}
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  cursor: default;
+  background-color: gray;
+  opacity: 0.5;
+}
+.modal {
+}
+
+//minipost
+
+.minipost {
+  width: 265px;
+  height: 272px;
+  cursor: pointer;
+}
+.image {
+  cursor: pointer;
+  display: flex;
+  width: 265px;
+  height: 272px;
+}
+.iconedit {
+  position:relative;
+  left: 110px;
+  top: 10px;
+  cursor: pointer;
+}

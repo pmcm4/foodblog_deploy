@@ -1,0 +1,58 @@
+.root {
+  background-color: #f9f6ee;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  padding-bottom: 50px;
+}
+.prof {
+  height: 300px;
+  width: 834px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.likes {
+  width: 834px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: auto;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+  height: 600px;
+  align-content: center;
+  justify-content: center;
+  grid-auto-flow: row;
+}
+.divider {
+  border: none;
+  width: 834px;
+  height: 2px;
+  background-color: black;
+}
+.profPic {
+  width: 195px;
+  height: 195px;
+  background-color: #d9d9d9;
+  border-radius: 100px;
+}
+.profName {
+}
+
+.mini {
+  width: 265px;
+  height: 272px;
+  cursor: pointer;
+}
+.image {
+  display: flex;
+  width: 265px;
+  height: 272px;
+}
+

@@ -1,0 +1,126 @@
+.root {
+  width: 100%;
+}
+.up {
+  height: 344px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: space-between;
+}
+.down {
+  height: 52px;
+  background-color: #b6b5b5;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 5px;
+}
+.left {
+  width: 400px;
+  height: 344px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+.center {
+  width: 400px;
+  height: 344px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+}
+.right {
+  width: 400px;
+  height: 344px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.foodDesc {
+  text-align: start;
+  padding-left: 30px;
+}
+.contact {
+  width: 231px;
+  height: 60px;
+}
+.contactinfo {
+  width: 231px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  position: relative;
+  right: 55px;
+}
+.contactIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.contactinfotext {
+}
+
+.socialIcons {
+  width: 231px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  right: 55px;
+  justify-items: start;
+}
+.quicklinks {
+}
+.links {
+  text-align: start;
+  cursor: pointer;
+}
+.ql {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.contactusemail {
+  width: 292px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+}
+.textarea {
+  width: 292px;
+  height: 88px;
+  border: none;
+  border-radius: 10px;
+}
+.send {
+  width: 112px;
+  height: 37px;
+  background-color: #097969;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.contactusheader {
+  text-align: start;
+}
+.allrights {
+}
+.allrights1 {
+  color: #d22b2b;
+}

@@ -1,0 +1,65 @@
+.root {
+  background-color: #f9f6ee;
+  border-radius: 30px 0px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 60px;
+  left: 1505px;
+  align-items: center;
+  justify-items: center;
+  gap: 20px;
+  box-shadow: -1px 0px 18px -1px rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: -1px 0px 18px -1px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: -1px 0px 18px -1px rgba(0, 0, 0, 0.63);
+  height: 200px;
+  width: 200px;
+}
+.toProfileBtn {
+  background-color: rgba(217, 217, 217, 1);
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.userProfileName {
+  font-family: 'Roboto';
+  font-weight: 700;
+  line-height: normal;
+  color: black;
+  align-self: stretch;
+  text-align: center;
+  font-size: 15px;
+}
+.toLogoutBtn {
+  background-color: rgba(217, 217, 217, 1);
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.logOut {
+  font-family: 'Roboto';
+  font-weight: 700;
+  line-height: normal;
+  color: black;
+  align-self: stretch;
+  text-align: center;
+  font-size: 15px;
+}
+

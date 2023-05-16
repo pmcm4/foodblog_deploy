@@ -1,0 +1,183 @@
+.root {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background-color: #f9f6ee;
+  height: 100vh;
+  width: 1920px;
+}
+.container {
+  width: 998px;
+  height: 628px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.54);
+  -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.54);
+  -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.54);
+}
+.login {
+  width: 503px;
+  height: 628px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.reg {
+  width: 503px;
+  height: 628px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.logobg {
+  width: 500px;
+  height: 628px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.containgerReg {
+  width: 401px;
+  height: 520px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.57);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.headerRegLog {
+  text-align: center;
+  font-size: 50px;
+  color: #1e1e1e;
+}
+.regLogP {
+  text-align: center;
+  width: 326px;
+  font-weight: 700;
+}
+.regBtn {
+  width: 220px;
+  height: 45px;
+  background-color: rgba(253, 218, 13, 0.72);
+  border-radius: 20px;
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  position: relative;
+  top: 60px;
+  cursor: pointer;
+}
+.logHead {
+  text-align: center;
+  position: relative;
+  bottom: 39px;
+  font-size: 40px;
+
+}
+.input {
+  width: 355px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-content: space-between;
+  justify-content: space-between;
+}
+.inputEmail {
+  height: 55px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 10px;
+  text-align: start;
+  padding-left: 10px;
+}
+.rfp {
+  width: 349px;
+  height: 19px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  top: 20px;
+}
+.remember {
+  height: 19px;
+  position: relative;
+  right: 45px;
+}
+.remember1 {
+  height: 19px;
+}
+.rememberBtn {
+  position: static;
+  background-color: #d9d9d9;
+}
+.loggbtn {
+  width: 220px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 20px;
+  row-gap: 4px;
+}
+.loginBtn {
+  width: 220px;
+  height: 47.55px;
+  background-color: #d22b2b;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+}
+.outys {
+}
+.glbg {
+  position: relative;
+  width: 49px;
+  height: 49px;
+  top: 20px;
+  cursor: pointer;
+}
+.gllg {
+  position: relative;
+  width: 80px;
+  height: 42px;
+  bottom: 25px;
+  cursor: pointer;
+
+}
+
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  cursor: default;
+  background-color: gray;
+  opacity: 0.5;
+}
