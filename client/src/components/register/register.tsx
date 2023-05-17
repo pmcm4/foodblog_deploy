@@ -53,7 +53,7 @@ export const Register = ({ className }: RegisterProps) => {
       const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
         try {
-          const res = await axios.post("https://foodblog-api.herokuapp.com/api/auth/register", inputs);
+          const res = await axios.post("/auth/register", inputs);
           console.log(res);
         } catch (err: any) {
             if (err.response && err.response.status === 409) {
@@ -87,9 +87,9 @@ export const Register = ({ className }: RegisterProps) => {
               password: "googleLogin", // Add a default password or generate one if required
             };
             // Make an API call to your backend server to save the user data
-            const response = await axios.post("https://foodblog-api.herokuapp.com/api/auth/register", userData);
+            const response = await axios.post("/auth/register", userData);
       
-            navigate("https://foodblog-api.herokuapp.com/api/login");
+            navigate("/login");
       
             // Handle the response from your backend if needed
           }

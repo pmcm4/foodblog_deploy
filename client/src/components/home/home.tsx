@@ -51,7 +51,7 @@ export const Home = ({ className }: HomeProps) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const res = await axios.get(`https://foodblog-api.herokuapp.com/api/posts/${cat}`);
+          const res = await axios.get(`/posts/${cat}`);
           setPosts(res.data);
         } catch (err) {
           console.log(err);
@@ -61,12 +61,12 @@ export const Home = ({ className }: HomeProps) => {
     }, [cat]);
 
     const location = useLocation();
-    const postId = location.pathname.split("/")[4];
+    const postId = location.pathname.split("/")[2];
 
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const res = await axios.get(`https://foodblog-api.herokuapp.com/api/posts/${postId}`);
+            const res = await axios.get(`/posts/${postId}`);
             setPost(res.data);
           } catch (err) {
             console.log(err);
@@ -95,11 +95,11 @@ export const Home = ({ className }: HomeProps) => {
             if (post.id === postId) {
               if (post.liked) {
                 // Unlike the post
-                axios.post(`https://foodblog-api.herokuapp.com/api/posts/${postId}/unlike`);
+                axios.post(`/posts/${postId}/unlike`);
                 return { ...post, liked: false, likeCount: post.likeCount - 1 };
               } else {
                 // Like the post
-                axios.post(`https://foodblog-api.herokuapp.com/api/posts/${postId}/like`);
+                axios.post(`/posts/${postId}/like`);
                 return { ...post, liked: true, likeCount: post.likeCount + 1 };
               }
             }
@@ -142,7 +142,7 @@ export const Home = ({ className }: HomeProps) => {
                                 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1683910827/cat1_vp2fcm.png'
                             }
                         />
-                        <Link to="https://foodblog-api.herokuapp.com/api/?cat=healthyfood" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Healthy Foods</span></Link>
+                        <Link to="/?cat=healthyfood" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Healthy Foods</span></Link>
                     </div>
                     <div className={styles.cats}>
                         <img
@@ -151,7 +151,7 @@ export const Home = ({ className }: HomeProps) => {
                                 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1683910827/cat2_uamldn.png'
                             }
                         />
-                        <Link to="https://foodblog-api.herokuapp.com/api/?cat=beverages" style={{textDecoration:"none", color:"black", textAlign:"center"}}><span className={styles.catgName}>Beverages</span></Link>
+                        <Link to="/?cat=beverages" style={{textDecoration:"none", color:"black", textAlign:"center"}}><span className={styles.catgName}>Beverages</span></Link>
                     </div>
                     <div className={styles.cats}>
                         <img
@@ -160,7 +160,7 @@ export const Home = ({ className }: HomeProps) => {
                                 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1683910826/cat3_brdewz.png'
                             }
                         />
-                        <Link to="https://foodblog-api.herokuapp.com/api/?cat=snacks" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Snacks</span></Link>
+                        <Link to="/?cat=snacks" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Snacks</span></Link>
                     </div>
                     <div className={styles.cats}>
                         <img
@@ -169,7 +169,7 @@ export const Home = ({ className }: HomeProps) => {
                                 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1683910827/cat4_ecg3an.png'
                             }
                         />
-                        <Link to="https://foodblog-api.herokuapp.com/api/?cat=intfood" style={{textDecoration:"none", color:"black", textAlign:"center"}}><span className={styles.catgName}>International Food</span></Link>
+                        <Link to="/?cat=intfood" style={{textDecoration:"none", color:"black", textAlign:"center"}}><span className={styles.catgName}>International Food</span></Link>
                     </div>
                     <div className={styles.cats}>
                         <img
@@ -178,7 +178,7 @@ export const Home = ({ className }: HomeProps) => {
                                 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1683910826/cat5_fesdtb.png'
                             }
                         />
-                        <Link to="https://foodblog-api.herokuapp.com/api/?cat=specialty" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Specialty</span></Link>
+                        <Link to="/?cat=specialty" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Specialty</span></Link>
                     </div>
                     <div className={styles.cats}>
                         <img
@@ -187,14 +187,14 @@ export const Home = ({ className }: HomeProps) => {
                                 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1683910826/cat6_pgnmjp.png'
                             }
                         />
-                        <Link to="https://foodblog-api.herokuapp.com/api/?cat=restaurants" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Restaurants</span></Link>
+                        <Link to="/?cat=restaurants" style={{textDecoration:"none", color:"black" , textAlign:"center"}}><span className={styles.catgName}>Restaurants</span></Link>
                     </div>
                 </div>
                 <div className={styles.posts11}>
             
                 {posts.map((post) => (
                     <div className={classNames(styles.cardpost, className)}>
-                      <Link to={`https://foodblog-api.herokuapp.com/api/post/${post.id}`} style={{ textDecoration: 'none', color: 'black'}}> <div className={styles.container}>
+                      <Link to={`/post/${post.id}`} style={{ textDecoration: 'none', color: 'black'}}> <div className={styles.container}>
                          <img className={styles.imgclass}
                              src={`../upload/${post.img}`}
                          />

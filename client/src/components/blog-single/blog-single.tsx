@@ -30,13 +30,13 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
   
   const [comment, setComment] = useState('');
   
-  const postId = location.pathname.split('/')[4];
+  const postId = location.pathname.split('/')[2];
   
   const handleClick = async (e: any) => {
     e.preventDefault();
   
     try {
-      await axios.post(`https://foodblog-api.herokuapp.com/api/posts/${postId}/comment`, {
+      await axios.post(`/posts/${postId}/comment`, {
         comment,
         date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
       });
@@ -52,7 +52,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
 
   const commentDelete = async (commentId: any) => {
     try {
-      await axios.delete(`https://foodblog-api.herokuapp.com/api/posts/${postId}/deleteComment/${commentId}`);
+      await axios.delete(`/posts/${postId}/deleteComment/${commentId}`);
     } catch (err) {
       console.log(err);
     }
@@ -88,7 +88,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://foodblog-api.herokuapp.com/api/posts/${postId}`);
+      await axios.delete(`/posts/${postId}`);
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -102,7 +102,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
     try {
       if (liked) {
         // Unlike the post
-        await axios.post(`https://foodblog-api.herokuapp.com/api/posts/${postId}/unlike`);
+        await axios.post(`/posts/${postId}/unlike`);
         setLiked(false);
         setPost((prevPost) => ({
           ...prevPost,
@@ -110,7 +110,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
         }));
       } else {
         // Like the post
-        await axios.post(`https://foodblog-api.herokuapp.com/api/posts/${postId}/like`);
+        await axios.post(`/posts/${postId}/like`);
         setLiked(true);
         setPost((prevPost) => ({
           ...prevPost,
@@ -136,7 +136,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
 
   useEffect(() => {
     if (!currentUser) {
-      navigate('https://foodblog-api.herokuapp.com/api/login');
+      navigate('/login');
     }
   }, [currentUser, navigate]);
 
@@ -153,7 +153,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://foodblog-api.herokuapp.com/api/posts/${postId}/getComments`);
+        const res = await axios.get(`/posts/${postId}/getComments`);
         setComments(res.data);
       } catch (err) {
         console.log(err);
@@ -168,7 +168,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://foodblog-api.herokuapp.com/api/posts/${postId}`);
+        const res = await axios.get(`/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
         console.log(err);
@@ -181,7 +181,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
   useEffect(() => {
     const fetchPostLikedStatus = async () => {
       try {
-        const response = await axios.get(`https://foodblog-api.herokuapp.com/api/posts/${postId}/likedStatus`);
+        const response = await axios.get(`/posts/${postId}/likedStatus`);
         const { liked, likeCount } = response.data;
     
         setLiked(liked);
@@ -210,7 +210,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
             <div className={styles.blogContent}>
                 <div className={styles.profile}>
                     <img className={styles.pic} src={`../upload/${post?.userImg}`} />
-                    <Link style={{ textDecoration: 'none', color: "black" }} to={`https://foodblog-api.herokuapp.com/api/adminprofile/${post.uid}`} className={styles.name}>
+                    <Link style={{ textDecoration: 'none', color: "black" }} to={`/adminprofile/${post.uid}`} className={styles.name}>
                     <span className={styles.name}>{post.username}</span>
                     </Link>
                 </div>

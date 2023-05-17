@@ -27,7 +27,7 @@ export const Navbar = ({ className }: NavbarProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             
-            <Link to="https://foodblog-api.herokuapp.com/api/" style={{ textDecoration: 'none' }}>
+            <Link to="/" style={{ textDecoration: 'none' }}>
             <img
                 alt=""
                 className={styles.num11}
@@ -35,19 +35,19 @@ export const Navbar = ({ className }: NavbarProps) => {
             />
             </Link>
             <div className={styles.btns} >
-            <Link to="https://foodblog-api.herokuapp.com/api/" style={{ textDecoration: 'none' }}>
+            <Link to="/" style={{ textDecoration: 'none' }}>
             <p className={styles.home}>Home</p>
             </Link>
             
             <p className={styles.category}>Category</p>
-            <Link to="https://foodblog-api.herokuapp.com/api/about" style={{ textDecoration: 'none' }}>
+            <Link to="/about" style={{ textDecoration: 'none' }}>
             <p className={styles.about}>About</p>
             </Link>
-            <Link to="https://foodblog-api.herokuapp.com/api/about" style={{ textDecoration: 'none' }}>
+            <Link to="/about" style={{ textDecoration: 'none' }}>
             <p className={styles.home}>Contact</p>
             </Link>
             <div className={styles.icons}>
-            <Link to="https://foodblog-api.herokuapp.com/api/search" style={{ textDecoration: 'none' }}>
+            <Link to="/search" style={{ textDecoration: 'none' }}>
                 <img
                     alt=""
                     className={styles.iconSearch}
@@ -74,11 +74,11 @@ export const Navbar = ({ className }: NavbarProps) => {
                                 <div className={styles.toProfileBtn}>
                                 {currentUser ? (
                                     currentUser.isAdmin ? (
-                                    <Link to={`https://foodblog-api.herokuapp.com/api/adminprofile/${userId}`} style={{ textDecoration: 'none' }}>
+                                    <Link to={`/adminprofile/${userId}`} style={{ textDecoration: 'none' }}>
                                         <p className={styles.userProfileName}>Hello, {currentUser.username}</p>
                                     </Link>
                                     ) : (
-                                    <Link to={`https://foodblog-api.herokuapp.com/api/profile/${userId}`} style={{ textDecoration: 'none' }}>
+                                    <Link to={`/profile/${userId}`} style={{ textDecoration: 'none' }}>
                                         <p className={styles.userProfileName}>Hello, {currentUser.username}</p>
                                     </Link>
                                     )
@@ -92,7 +92,7 @@ export const Navbar = ({ className }: NavbarProps) => {
                                     Log out
                                     </p>
                                 ) : (
-                                    <Link style={{ textDecoration: 'none' }} className={styles.logOut} to="https://foodblog-api.herokuapp.com/api/login">
+                                    <Link style={{ textDecoration: 'none' }} className={styles.logOut} to="/login">
                                     Log in
                                     </Link>
                                 )}
