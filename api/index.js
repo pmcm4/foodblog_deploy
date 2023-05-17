@@ -26,9 +26,23 @@ app.post("/api/upload", upload.single("file"), function (req, res) {
   res.status(200).json(file.filename);
 });
 
-app.use("/api/posts", postRoute); // Make sure this line is correct
+app.use("/api/posts", postRoute);
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+
+app.get("/test", (req, res) => {
+  // Test your database here
+  // You can perform any database operations you want to test
+  
+  // Example: Fetch all posts from the database
+  db.query("SELECT * FROM posts", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json("Internal Server Error");
+    }
+    return res.status(200).json(data);
+  });
+});
 
 app.listen(process.env.PORT || 8800, () => {
   console.log(`Server started on port ${process.env.PORT || 8800}`);

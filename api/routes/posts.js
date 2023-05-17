@@ -13,7 +13,6 @@ router.post("/:id/like", likePost);
 router.post("/:id/unlike", unlikePost); 
 router.get("/:id/likedStatus", getLikedStatus);
 router.get("/user/:id", getLikedPosts);
-router.get("/test", test)
 
 // Add the comment routes
 router.get("/:id/getComments", getPostComments);
