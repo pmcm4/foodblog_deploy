@@ -69,6 +69,6 @@
   },
   "proxy": "http://localhost:8800/api/",
   "engines": {
-    "node": "18.16.0"
+    "node": "v18.15.0"
   }
 }
