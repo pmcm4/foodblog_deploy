@@ -21,13 +21,13 @@ export const UserProfile = ({ className }: UserProfileProps) => {
     const {currentUser, logout} = useContext(AuthContext)
 
     const location = useLocation();
-    const postId = location.pathname.split("/")[2];
+    const postId = location.pathname.split("/")[4];
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const res = await axios.get(`/posts/user/${postId}`);
+            const res = await axios.get(`https://foodblog-api.herokuapp.com/api/posts/user/${postId}`);
             setLikes(res.data);
           } catch (err) {
             console.log(err);
@@ -38,7 +38,7 @@ export const UserProfile = ({ className }: UserProfileProps) => {
 
       useEffect(() => {
         if (!currentUser) {
-          navigate('/login');
+          navigate('https://foodblog-api.herokuapp.com/api/login');
         }
       }, [currentUser, navigate]);
 
@@ -55,7 +55,7 @@ export const UserProfile = ({ className }: UserProfileProps) => {
                 <div className={styles.likes}>
                 {likes.map((post) => (
                         <div className={classNames(styles.mini, className)}>
-                        <Link className="link" to={`/post/${post.id}`}>
+                        <Link className="link" to={`https://foodblog-api.herokuapp.com/api/post/${post.id}`}>
                         <img
                             className={styles.image}
                             src={`../upload/${post.img}`}

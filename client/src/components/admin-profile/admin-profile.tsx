@@ -32,7 +32,7 @@ export const AdminProfile = ({ className }: AdminProfileProps) => {
 
       useEffect(() => {
         if (!currentUser) {
-          navigate("/");
+          navigate("https://foodblog-api.herokuapp.com/api/");
         }
       }, [currentUser, navigate]);
 
@@ -45,12 +45,12 @@ export const AdminProfile = ({ className }: AdminProfileProps) => {
     const [posts, setPosts] = useState<{img: string , id: string  }[]>([]);
 
     const location = useLocation();
-    const userId = location.pathname.split("/")[2];
+    const userId = location.pathname.split("/")[4];
 
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const res = await axios.get(`/posts/admin/${userId}`);
+            const res = await axios.get(`https://foodblog-api.herokuapp.com/api/posts/admin/${userId}`);
             setPosts(res.data);
           } catch (err) {
             console.log(err);
@@ -67,7 +67,7 @@ export const AdminProfile = ({ className }: AdminProfileProps) => {
           if (file) {
             formData.append("file", file);
           }
-          const res = await axios.post("/upload", formData);
+          const res = await axios.post("https://foodblog-api.herokuapp.com/api/upload", formData);
           return res.data
         } catch (err) {
           console.log(err);

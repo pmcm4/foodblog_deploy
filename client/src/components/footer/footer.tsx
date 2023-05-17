@@ -51,13 +51,13 @@ export const Footer = ({ className }: FooterProps) => {
                         
                         <h1 className={styles.quicklinks}>Quick Links</h1>
                         
-                        <Link to={"/"} style={{textDecoration: "none", color: "black", textAlign: "start"}} >
+                        <Link to={"https://foodblog-api.herokuapp.com/api/"} style={{textDecoration: "none", color: "black", textAlign: "start"}} >
                         <span className={styles.links}>Home</span>
                         </Link>
-                        <Link to={"/about"} style={{textDecoration: "none", color: "black", textAlign: "start"}}>
+                        <Link to={"https://foodblog-api.herokuapp.com/api/about"} style={{textDecoration: "none", color: "black", textAlign: "start"}}>
                         <span className={styles.links}>About</span>
                         </Link>
-                        <Link to={"/cat"} style={{textDecoration: "none", color: "black", textAlign: "start"}}>
+                        <Link to={"https://foodblog-api.herokuapp.com/api/cat"} style={{textDecoration: "none", color: "black", textAlign: "start"}}>
                         <span className={styles.links}>Category</span>
                         </Link>
                         <span className={styles.links}>Get Started</span>

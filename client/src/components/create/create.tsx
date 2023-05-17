@@ -29,12 +29,12 @@ export const Create = ({ className }: CreateProps) => {
 
     useEffect(() => {
       if (!currentUser) {
-        navigate('/login');
+        navigate('https://foodblog-api.herokuapp.com/api/login');
       }
     }, [currentUser, navigate]);
     const location = useLocation()
 
-    const userId = location.pathname.split('/')[2];
+    const userId = location.pathname.split('/')[4];
 
     useEffect(() => {
       if (currentUser.id !== userId) {
@@ -49,7 +49,7 @@ export const Create = ({ className }: CreateProps) => {
           if (file) {
             formData.append("file", file);
           }
-          const res = await axios.post("/upload", formData);
+          const res = await axios.post("https://foodblog-api.herokuapp.com/api/upload", formData);
           return res.data
         } catch (err) {
           console.log(err);
@@ -65,13 +65,13 @@ export const Create = ({ className }: CreateProps) => {
       
         try {
           state 
-          ? await axios.put(`/posts/${state.id}`, {
+          ? await axios.put(`https://foodblog-api.herokuapp.com/api/posts/${state.id}`, {
             title,
             desc: value,
             cat,
             img: file ? imgUrl : "",
           })
-        : await axios.post(`/posts/`, {
+        : await axios.post(`https://foodblog-api.herokuapp.com/api/posts/`, {
             title,
             desc: value,
             cat,

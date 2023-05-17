@@ -27,7 +27,7 @@ export const Login = ({ className }: LoginProps) => {
 
     useEffect(() => {
         if (currentUser) {
-          navigate('/');
+          navigate('https://foodblog-api.herokuapp.com/api/');
         }
       }, [currentUser, navigate]);
 
@@ -43,7 +43,7 @@ export const Login = ({ className }: LoginProps) => {
         e.preventDefault()
         try{
             await login(inputs)
-            navigate("/")
+            navigate("https://foodblog-api.herokuapp.com/api/")
         } catch(err: any){
             if (err.response && err.response.status == 404) {
                 setErrorMessage("User not found!");
@@ -70,7 +70,7 @@ export const Login = ({ className }: LoginProps) => {
       
           // Make an API call to your backend server to login with Google
           const response = await login(userData)
-          navigate("/")
+          navigate("https://foodblog-api.herokuapp.com/api/")
       
           // Handle the response from your backend if needed
           console.log(response.data);
@@ -138,7 +138,7 @@ export const Login = ({ className }: LoginProps) => {
                         <p className={styles.regLogP}>
                             Join the epicurean escapade! Register now to tantalize your taste buds.
                         </p>
-                        <Link to={"/register"} >
+                        <Link to={"https://foodblog-api.herokuapp.com/api/register"} >
                         <button className={styles.regBtn}>Register Here!</button>
                         </Link>
                     </div>
