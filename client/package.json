@@ -67,5 +67,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8800/api/"
+  "proxy": "http://localhost:8800/api/",
+  "engines": {
+    "node": "18.16.0"
+  }
 }
