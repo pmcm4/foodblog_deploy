@@ -12,11 +12,11 @@ export const getAdminPosts = (req, res) => {
 };
 
 export const test = (req, res) => {
-  test.find({}, (err, res)=>{
-    if (err) {
-      res.send(err);
+  test.find({}, (error, res)=>{
+    if (error) {
+      res.send(error);
     } else {
-      res.send(res);
+      res.send(error);
     }
   })
 };
