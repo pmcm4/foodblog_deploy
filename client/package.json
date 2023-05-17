@@ -70,6 +70,6 @@
   },
   "proxy": "https://foodblog-api.herokuapp.com/api/",
   "engines": {
-    "node": "v18.15.0"
+    "node": "v18.7.0"
   }
 }
