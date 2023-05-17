@@ -4,6 +4,7 @@ import authRoute from "./routes/auth.js";
 import userRoute from "./routes/users.js";
 import cookieParser from "cookie-parser";
 import multer from 'multer';
+import { db } from "../db.js";
 
 const app = express();
 
