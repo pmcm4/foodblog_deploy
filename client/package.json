@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "production": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -23,7 +22,6 @@
     "js-cookie": "^3.0.5",
     "js-cookies": "^1.0.4",
     "moment": "^2.29.4",
-    "node": "^18.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-quill": "^2.0.0",
@@ -70,6 +68,6 @@
   },
   "proxy": "https://foodblog-api.herokuapp.com/api/",
   "engines": {
-    "node": "v18.7.0"
+    "node": "18.7.0"
   }
 }
