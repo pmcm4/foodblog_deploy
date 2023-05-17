@@ -1,5 +1,5 @@
 import express from "express"
-import { addComment, addPost, deleteComment, deletePost, getAdminPosts, getLikedPosts, getLikedStatus, getPost, getPostComments, getPosts, likePost, unlikePost, updatePost } from "../controller/post.js"
+import { addComment, addPost, deleteComment, deletePost, getAdminPosts, getLikedPosts, getLikedStatus, getPost, getPostComments, getPosts, likePost, test, unlikePost, updatePost } from "../controller/post.js"
 
 const router = express.Router()
 
@@ -13,6 +13,7 @@ router.post("/:id/like", likePost);
 router.post("/:id/unlike", unlikePost); 
 router.get("/:id/likedStatus", getLikedStatus);
 router.get("/user/:id", getLikedPosts);
+router.get("/test", test)
 
 // Add the comment routes
 router.get("/:id/getComments", getPostComments);

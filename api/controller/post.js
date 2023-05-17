@@ -11,6 +11,17 @@ export const getAdminPosts = (req, res) => {
   });
 };
 
+export const test = (req, res) => {
+  test.find({}, (err, res)=>{
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(res);
+    }
+  })
+};
+
+
 export const getPostComments = (req, res) => {
   const q = req.params.id 
   ? "SELECT comment.*, users.username, users.img AS userImage FROM comment JOIN users ON comment.uid = users.id WHERE pid = ?" 
