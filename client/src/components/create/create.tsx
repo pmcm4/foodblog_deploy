@@ -27,20 +27,12 @@ export const Create = ({ className }: CreateProps) => {
     const [cat, setCat] = useState(state?.cat || "");
     const navigate = useNavigate();
 
-    useEffect(() => {
-      if (!currentUser) {
-        navigate('/login');
-      }
-    }, [currentUser, navigate]);
+
     const location = useLocation()
 
     const userId = location.pathname.split('/')[2];
 
-    useEffect(() => {
-      if (currentUser.id !== userId) {
-        navigate('/');
-      }
-    }, [currentUser, navigate]);
+
     
 
     const upload = async () => {

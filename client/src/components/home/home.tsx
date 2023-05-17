@@ -36,15 +36,13 @@ export const Home = ({ className }: HomeProps) => {
       id: string;
       cat: string;
       liked: boolean;
-      likeCount: number;
+      likes: number;
       date: string;
       userImg: string;
 
     }[]
   >([]);
     const [post, setPost] = useState({});
-    const [liked, setLiked] = useState(false);
-    const [likeCount, setLikeCount] = useState(0);
     
     const cat = useLocation().search;
   
@@ -89,27 +87,7 @@ export const Home = ({ className }: HomeProps) => {
       }
     };
 
-      const handleLike = async (postId: string) => {
-        try {
-          const updatedPosts = posts.map((post) => {
-            if (post.id === postId) {
-              if (post.liked) {
-                // Unlike the post
-                axios.post(`/posts/${postId}/unlike`);
-                return { ...post, liked: false, likeCount: post.likeCount - 1 };
-              } else {
-                // Like the post
-                axios.post(`/posts/${postId}/like`);
-                return { ...post, liked: true, likeCount: post.likeCount + 1 };
-              }
-            }
-            return post;
-          });
-          setPosts(updatedPosts);
-        } catch (error) {
-          console.error(error);
-        }
-      };
+
       
       const formatCategoryName = (category: any) => {
         if (category === 'healthyfood') {
@@ -125,6 +103,8 @@ export const Home = ({ className }: HomeProps) => {
         }
 
       };
+
+      
       
       
       

@@ -11,15 +11,6 @@ export const getAdminPosts = (req, res) => {
   });
 };
 
-export const test = (req, res) => {
-  test.find({}, (error, res)=>{
-    if (error) {
-      res.send(error);
-    } else {
-      res.send(error);
-    }
-  })
-};
 
 
 export const getPostComments = (req, res) => {
@@ -53,17 +44,50 @@ export const getLikedPosts = (req, res) => {
 };
 
 
+export const getSearchPosts1 = async (sc) => {
+  console.log("search!")
+  try {
+    const q = `SELECT posts.*, users.username, users.img as userImg 
+               FROM posts JOIN users ON posts.uid = users.id
+               WHERE posts.title LIKE ? OR posts.content LIKE ?`;
+    const query = `%${sc}%`;
+    
+    const results = await db.query(q, [query, query]);
+    // Process and return search posts data
+    return results;
+  } catch (error) {
+    console.error('Error fetching search posts:', error);
+    throw new Error('Failed to fetch search posts');
+  }
+
+};
+export const getSearchPosts = (req, res) => {
+  const q = "SELECT posts.*, users.username, users.img as userImg FROM posts JOIN users ON posts.uid = users.id WHERE posts.title LIKE ? OR posts.desc LIKE ?";
+  const query = `%${req.query.sc}%`;
+
+  console.log("search");
+
+  db.query(q, [query, query], (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    return res.status(200).json(data);
+  });
+};
+
+
 export const getPosts = (req, res) => {
   const q = req.query.cat
   ? "SELECT posts.*, users.username, users.img as userImg FROM posts JOIN users ON posts.uid = users.id WHERE cat = ?"
   : "SELECT posts.*, users.username, users.img as userImg FROM posts JOIN users ON posts.uid = users.id";
   
-  console.log("fetch by category");
+  console.log("hello");
+
   db.query(q, [req.query.cat], (err, data) => {
     if (err) return res.status(500).send(err);
 
     return res.status(200).json(data);
   });
+
 };
 
 export const getPost = (req, res) => {
