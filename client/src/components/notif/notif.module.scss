@@ -1,0 +1,56 @@
+.root {
+  background-color: #fbea88;
+  width: 533px;
+  height: 922px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: space-around;
+  flex-direction: column;
+}
+.NOTIFHEADER {
+  width: 90%;
+  padding-left: 10px;
+}
+.notifBody {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 85%;
+  gap: 10px;
+}
+.notif {
+  height: 59px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.userPic {
+  width: 59px;
+  height: 59px;
+  border-radius: 150px;
+  background-color: gray;
+}
+.notifText {
+  height: 59px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.postPic {
+  height: 59px;
+  width: 47px;
+  border-radius: 10px;
+  background-color: gray;
+}
+.userName {
+  font-weight: 700;
+}
+.time {
+  color: gray;
+  font-weight: 600;
+}
+.overlay {
+}

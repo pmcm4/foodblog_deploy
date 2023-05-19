@@ -142,3 +142,82 @@
   font-size: 15px;
 }
 
+
+// notif
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  cursor: default;
+  background-color: gray;
+  opacity: 0.5;
+}
+.notifBadoy {
+  background-color: #fbea88;
+  width: 500px;
+  height: 922px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: space-around;
+  flex-direction: column;
+  position: fixed;
+  right: 200px;
+  top: 100px;
+}
+.NOTIFHEADER {
+  width: 90%;
+  padding-left: 10px;
+}
+
+.notifBody {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 85%;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
+}
+.notif {
+  height: 59px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.userPic {
+  width: 59px;
+  height: 59px;
+  border-radius: 150px;
+  background-color: gray;
+}
+.notifText {
+  height: 59px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+.postPic {
+  height: 59px;
+  width: 47px;
+  border-radius: 10px;
+  background-color: gray;
+}
+.userName {
+  font-weight: 700;
+}
+.time {
+  color: gray;
+  font-weight: 600;
+}
+.passage{
+  font-weight: 500;
+}

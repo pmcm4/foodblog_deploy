@@ -32,9 +32,6 @@ export const Create = ({ className }: CreateProps) => {
 
     const userId = location.pathname.split('/')[2];
 
-
-    
-
     const upload = async () => {
         try {
           const formData = new FormData();
@@ -75,9 +72,7 @@ export const Create = ({ className }: CreateProps) => {
         }
       
         // Wait for 2 seconds before refreshing the page
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+        window.location.reload();
       };
       
     return (

@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './navbar.module.scss';
 import classNames from 'classnames';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { ProfileLogout } from '../profile-logout/profile-logout';
 import { AuthContext } from '../../context/authContext';
+import axios from 'axios';
+import moment from 'moment';
+
 
 export interface NavbarProps {
     className?: string;
@@ -14,14 +17,41 @@ export interface NavbarProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-navbars-and-templates
  */
 export const Navbar = ({ className }: NavbarProps) => {
+    const [notifications, setNotif] = useState<
+    {
+      username: string;
+      passage: string;
+      date: string;
+      post_image: string;
+      user_image: string;
+      postID: string;
 
+    }[]
+  >([]);
     const [modal, setModal] = useState(false);
     const toggleModal = () => {
       setModal(!modal);
     };
+
+    const [notifModal, toggleNotifModal] = useState(false);
+    const toggleLikeModal = () => {
+        toggleNotifModal(!notifModal);
+    };
   
     const { currentUser, logout } = useContext(AuthContext);
     const userId = currentUser?.id;
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const res = await axios.get(`/posts/allnotif/${userId}`);
+            setNotif(res.data);
+          } catch (err) {
+            console.log(err);
+          }
+        };
+        fetchData();
+      }, [userId]);
 
     
     return (
@@ -59,6 +89,7 @@ export const Navbar = ({ className }: NavbarProps) => {
                     alt=""
                     className={styles.vector}
                     src="https://static.overlay-tech.com/assets/44a6f2bd-fa39-45c1-b60b-7c3c8bb06eb6.svg"
+                    onClick={toggleLikeModal}
                 />
                 <img
                     onClick={toggleModal}
@@ -100,8 +131,30 @@ export const Navbar = ({ className }: NavbarProps) => {
                             </div>
                             </div>
                         )}
-               
-                
+                    {notifModal && (
+                            <div className='modal'>
+                            <div className={styles.overlay} onClick={toggleLikeModal}></div>
+                            <div className={classNames(styles.root1)}>
+                            <div className={styles.notifBadoy}>
+                            <h1 className={styles.NOTIFHEADER}>Notifications</h1>
+                            {notifications.map((notif) => (
+                            <Link className={styles.notifBody} to={`/post/${notif.postID}`}>
+                            <div className={styles.notifBody}>
+                                <div className={styles.notif}>
+                                    <img className={styles.userPic} src={`../upload/${notif.user_image}`}/>
+                                    <div className={styles.notifText}>
+                                        <span className={styles.userName}>{notif.username} <span className={styles.passage}> {notif.passage}</span></span>
+                                        <span className={styles.time}>{moment(notif.date).fromNow()}</span>
+                                    </div>
+                                    <img className={styles.postPic} src={`../upload/${notif.post_image}`}/>
+                                </div>
+                            </div>
+                            </Link>
+                            ))}
+                        </div>
+                        </div>
+                        </div>
+                          )}
             </div>
             </div>
         </div>

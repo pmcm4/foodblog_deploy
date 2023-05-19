@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
+import moment from 'moment';
 
 export const getAdminPosts = (req, res) => {
   const q = req.params.id ? "SELECT * FROM posts WHERE uid = ?" : "SELECT * FROM posts";
@@ -90,6 +91,22 @@ export const getPosts = (req, res) => {
 
 };
 
+export const getAllNotif = (req, res) => {
+  console.log("getting notif...");
+
+  const q = "SELECT n.*, u.username, p.img AS post_image, u.img AS user_image FROM notif n JOIN users u ON n.userID = u.id JOIN posts p ON n.postID = p.id WHERE p.uid = ? AND n.userID <> p.uid ORDER BY n.date DESC";
+
+  
+  const userId = req.params.user_id; // Assuming you have the authenticated user's ID
+  
+  db.query(q, [userId], (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    return res.status(200).json(data);
+  });
+};
+
+
 export const getPost = (req, res) => {
   const q =
     "SELECT p.id, `username`, `title`, `desc`, `likes`, `uid`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
@@ -127,6 +144,81 @@ export const addPost = (req, res) => {
   });
 };
 
+export const addLikeNotif = (req, res) => {
+  console.log("like notif comms")
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not Authenticated!");
+
+  jwt.verify(token, "jwtkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const q =
+      "INSERT INTO notif(`userID`, `postID`, `date`, `likeID`, `passage`) VALUES (?)";
+
+    const values = [
+      req.body.currentUserID,
+      req.body.postId,
+      req.body.date,
+      req.body.latestLike,
+      req.body.passage,
+    ];
+
+    db.query(q, [values], (err, data) => {
+      if (err) return res.status(500).json(err);
+      return res.json("Notif has been created");
+    });
+  });
+};
+
+export const addCommentNotif = (req, res) => {
+  console.log("like notif comms")
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not Authenticated!");
+
+  jwt.verify(token, "jwtkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const q =
+      "INSERT INTO notif(`userID`, `postID`, `date`, `commentID`, `passage`) VALUES (?)";
+
+    const values = [
+      req.body.currentUserID,
+      req.body.postId,
+      req.body.date,
+      req.body.latestcomment,
+      req.body.passage,
+    ];
+
+    db.query(q, [values], (err, data) => {
+      if (err) return res.status(500).json(err);
+      return res.json("Notif has been created");
+    });
+  });
+
+  
+};
+
+export const deletelikeNotif = (req, res) => {
+  console.log("delete notif comms")
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not authenticated!");
+
+  jwt.verify(token, "jwtkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const postId = req.params.postID;
+    const likeId = req.params.likeID
+    const q = "DELETE FROM notif WHERE `postID` = ? AND `likeID` = ?";
+
+    db.query(q, [postId, likeId], (err, data) => {
+      if (err) return res.status(403).json("You can delete only your post!");
+
+      return res.json("notif like deleted has been deleted!");
+    });
+  });
+};
+
+
 export const addComment = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not Authenticated!");
@@ -134,7 +226,7 @@ export const addComment = (req, res) => {
 
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
-
+    console.log("comment notify")
     const q =
       "INSERT INTO comment(`pid`, `uid`, `commentData`, `date`) VALUES (?, ?, ?, ?)";
 
@@ -150,6 +242,8 @@ export const addComment = (req, res) => {
       return res.json("Comment has been posted");
     });
   });
+
+
 };
 
 export const deletePost = (req, res) => {
@@ -170,6 +264,52 @@ export const deletePost = (req, res) => {
   });
 };
 
+export const deleteNotif = (req, res) => {
+  console.log("delete Notif comms")
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not authenticated!");
+
+  jwt.verify(token, "jwtkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const postId = req.params.postID;
+    const likeId = req.params.likeID;
+    const q = "DELETE FROM notif WHERE `postID` = ? AND `idnotif` = ?";
+
+    db.query(q, [postId, likeId], (err, data) => {
+      if (err) return res.status(403).json("You can delete only your post!");
+
+      return res.json("Notif has been deleted!");
+    });
+  });
+};
+
+
+
+export const getLatestLike = (req, res) => {
+  console.log("latest id like comms")
+  const q =
+    "SELECT idlike FROM likedb ORDER BY idlike DESC LIMIT 1";
+
+  db.query(q, [req.params.id], (err, data) => {
+    if (err) return res.status(500).json(err);
+
+    return res.status(200).json(data[0]);
+  });
+};
+
+export const getLatestComment = (req, res) => {
+  console.log("latest id comment comms")
+  const q =
+    "SELECT id FROM comment ORDER BY id DESC LIMIT 1";
+
+  db.query(q, [req.params.id], (err, data) => {
+    if (err) return res.status(500).json(err);
+
+    return res.status(200).json(data[0]);
+  });
+};
+
 export const deleteComment = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
@@ -179,15 +319,27 @@ export const deleteComment = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const postId = req.params.id;
-    const q = "DELETE FROM comment WHERE `pid` = ? AND `uid` = ? AND `id` = ?";
+    const commentId = req.params.commentId;
 
-    db.query(q, [postId, userInfo.id, req.params.commentId], (err, data) => {
-      if (err) return res.status(403).json("You can delete only your post!");
+    // Delete the comment from the comment table
+    const deleteCommentQuery = "DELETE FROM comment WHERE `pid` = ? AND `uid` = ? AND `id` = ?";
+    db.query(deleteCommentQuery, [postId, userInfo.id, commentId], (err, data) => {
+      if (err) return res.status(403).json("You can delete only your comment!");
 
-      return res.json("Comment has been deleted!");
+      // Delete the corresponding comment notification
+      const deleteNotificationQuery = "DELETE FROM `notif` WHERE `postID` = ? AND `userID` = ? AND `commentID` = ?";
+      db.query(deleteNotificationQuery, [postId, userInfo.id, commentId], (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json("Internal Server Error");
+        }
+
+        return res.json("Comment has been deleted!");
+      });
     });
   });
 };
+
 
 export const updatePost = (req, res) => {
   const token = req.cookies.access_token;
@@ -213,6 +365,7 @@ export const likePost = (req, res) => {
   const postId = req.params.id;
   const token = req.cookies.access_token;
   let userId;
+  const datenow = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
 
   // Retrieve user ID from the authentication token
   try {
@@ -239,8 +392,8 @@ export const likePost = (req, res) => {
 
       // User hasn't liked the post, so insert a new like entry
       db.query(
-        "INSERT INTO `likeDB` (pid, uid) VALUES (?, ?)",
-        [postId, userId],
+        "INSERT INTO `likeDB` (pid, uid, date) VALUES (?, ?, ?)",
+        [postId, userId, datenow],
         (err) => {
           if (err) {
             console.error(err);
@@ -280,6 +433,7 @@ export const unlikePost = (req, res) => {
   } catch (err) {
     return res.status(403).json("Token is not valid!");
   }
+
   // Check if the user has liked the post
   db.query(
     "SELECT * FROM `likeDB` WHERE pid = ? AND uid = ?",
@@ -305,18 +459,30 @@ export const unlikePost = (req, res) => {
             return res.status(500).json("Internal Server Error");
           }
 
-          // Update the likeCount in the posts table
+          // Delete the corresponding notification
           db.query(
-            "UPDATE posts SET likes = likes - 1 WHERE id = ?",
-            [postId],
+            "DELETE FROM `notif` WHERE postID = ? AND userID = ?",
+            [postId, userId],
             (err) => {
               if (err) {
                 console.error(err);
                 return res.status(500).json("Internal Server Error");
               }
 
-              // Return success response
-              return res.status(200).json("Post unliked");
+              // Update the likeCount in the posts table
+              db.query(
+                "UPDATE posts SET likes = likes - 1 WHERE id = ?",
+                [postId],
+                (err) => {
+                  if (err) {
+                    console.error(err);
+                    return res.status(500).json("Internal Server Error");
+                  }
+
+                  // Return success response
+                  return res.status(200).json("Post unliked");
+                }
+              );
             }
           );
         }
@@ -324,6 +490,7 @@ export const unlikePost = (req, res) => {
     }
   );
 };
+
 
 
 export const getLikedStatus = (req, res) => {

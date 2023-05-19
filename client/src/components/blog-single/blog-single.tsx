@@ -27,27 +27,45 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  
+  const currentUserID = currentUser.id;
   const [comment, setComment] = useState('');
   
   const postId = location.pathname.split('/')[2];
   
   const handleClick = async (e: any) => {
     e.preventDefault();
-  
+
+
     try {
+
+
+      
       await axios.post(`/posts/${postId}/comment`, {
         comment,
         date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
       });
       // Clear the comment input field or update the comments list
       setComment('');
+
+      const response = await axios.get(`/posts/comments/latest`);
+      const latestcomment = response.data;
+
+      await axios.post(`/posts/${postId}/notifAddComment`, {
+        currentUserID,
+        postId,
+        date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        latestcomment: latestcomment.id,
+        passage: "commented on your post"
+      });
+
+      
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
   
     // Wait for 2 seconds before refreshing the page
-    window.location.reload();
+   
   };
 
   const commentDelete = async (commentId: any) => {
@@ -62,6 +80,9 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
   const cat = useLocation().search;
 
   const isAdmin = currentUser?.isAdmin;
+
+  
+console.log(currentUserID)
 
   const getText = (html: any) => {
     const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -86,6 +107,11 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
     uid: '',
   });
 
+  const currentUserOwnsPost = currentUser?.id === post?.uid;
+  const userID = currentUser.id;
+
+  console.log(currentUserOwnsPost)
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/posts/${postId}`);
@@ -108,6 +134,7 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
           ...prevPost,
           likes: (parseInt(prevPost.likes) - 1).toString(),
         }));
+
       } else {
         // Like the post
         await axios.post(`/posts/${postId}/like`);
@@ -115,7 +142,21 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
         setPost((prevPost) => ({
           ...prevPost,
           likes: (parseInt(prevPost.likes) + 1).toString(),
+          date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
         }));
+
+        const response = await axios.get(`/posts/likes/latest`);
+        const latestLike = response.data;
+
+        // add info to notif db
+        await axios.post(`/posts/${postId}/notifAdd`, {
+          currentUserID,
+          postId,
+          date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+          latestLike: latestLike.idlike,
+          passage: "likes your post"
+        });
+
       }
     } catch (error) {
       console.error(error);
@@ -233,14 +274,16 @@ export const BlogSingle = ({ className }: BlogSingleProps) => {
                     <div className={styles.left}>
                         <ModeCommentOutlinedIcon sx={{ cursor: 'pointer' }} />
                         <InsertLinkIcon sx={{ cursor: 'pointer' }} onClick = {handleCopy}/>
-                        {isAdmin ? (
-                        <>
-                            <DeleteOutlineOutlinedIcon onClick = {handleDelete} sx={{ cursor: 'pointer' }} />
-                            <Link style={{ textDecoration: 'none', color: "black" }} to={`/edit/${postId}`} state={post}>
-                            <EditOutlinedIcon sx={{ cursor: 'pointer' }}  />
-                            </Link>
-                        </>
-                        ) : null}
+                        {currentUserOwnsPost ? (
+                            <>
+                              <DeleteOutlineOutlinedIcon onClick={handleDelete} sx={{ cursor: 'pointer' }} />
+                              {isAdmin || currentUserOwnsPost ? (
+                                <Link style={{ textDecoration: 'none', color: "black" }} to={`/edit/${postId}`} state={post}>
+                                  <EditOutlinedIcon sx={{ cursor: 'pointer' }}  />
+                                </Link>
+                              ) : null}
+                            </>
+                          ) : null}
                     </div>
                     <div className={styles.right}>
                     {liked ? (

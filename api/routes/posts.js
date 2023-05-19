@@ -1,5 +1,5 @@
 import express from "express"
-import { addComment, addPost, deleteComment, deletePost, getAdminPosts, getLikedPosts, getLikedStatus, getPost, getPostComments, getPosts, getSearchPosts, likePost, unlikePost, updatePost } from "../controller/post.js"
+import { addComment, addCommentNotif, addLikeNotif, addPost, deleteComment, deletePost, deletelikeNotif, getAdminPosts, getAllNotif, getLatestComment, getLatestLike, getLikedPosts, getLikedStatus, getPost, getPostComments, getPosts, getSearchPosts, likePost, unlikePost, updatePost } from "../controller/post.js"
 
 const router = express.Router()
 
@@ -23,7 +23,11 @@ router.post("/:id/comment", addComment);
 router.delete("/:id/deleteComment/:commentId", deleteComment);
 
 
-//search
-
+// notif
+router.get("/likes/latest", getLatestLike)
+router.get("/comments/latest", getLatestComment)
+router.post("/:id/notifAdd", addLikeNotif)
+router.post("/:id/notifAddComment", addCommentNotif)
+router.get("/allnotif/:user_id", getAllNotif);
 
 export default router
